@@ -1,12 +1,12 @@
-.customer-form {
+/* .customer-form {
   display: flex;
   justify-content: space-between;
   align-items: center;
   column-gap: 10px;
   margin-bottom: 20px;
-}
+} */
 
-.customer-input {
+/* .customer-input {
   position: relative;
   cursor: text;
   font-size: 14px;
@@ -21,7 +21,7 @@
   overflow: hidden;
   transition: all 100ms ease-in-out;
   flex: 1;
-}
+} */
 
 .customer-input:focus {
   border-color: #3c4fe0;

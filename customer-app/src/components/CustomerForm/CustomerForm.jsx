@@ -1,5 +1,16 @@
 import { useState } from "react";
+import styled from 'styled-components' 
 import "./CustomerForm.css";
+
+const Form =styled.form`
+display: flex;
+justify-content: space-between;
+align-items: center;
+column-gap: 10px;
+margin-bottom: 20px;
+`
+
+
 
 const CustomerForm = ({ addNewCustomer }) => {
   const [customerName, setCustomerName] = useState("");
@@ -26,7 +37,7 @@ const CustomerForm = ({ addNewCustomer }) => {
     setCustomerName(nameValue)
   }
   return (
-    <form className="customer-form" onSubmit={handleSubmit}>
+    <Form className="customer-form" onSubmit={handleSubmit}>
       <input
         type="text"
         className={`customer-input ${isValid ? 'invalid' : ""}`}
@@ -38,7 +49,7 @@ const CustomerForm = ({ addNewCustomer }) => {
       <button>
         <i className="bi bi-plus-lg"></i>
       </button>
-    </form>
+    </Form>
   );
 };
 
