@@ -1,12 +1,12 @@
-/* .customer-form {
+.customerForm {
   display: flex;
   justify-content: space-between;
   align-items: center;
   column-gap: 10px;
   margin-bottom: 20px;
-} */
+}
 
-/* .customer-input {
+.customerInput {
   position: relative;
   cursor: text;
   font-size: 14px;
@@ -21,9 +21,9 @@
   overflow: hidden;
   transition: all 100ms ease-in-out;
   flex: 1;
-} */
+}
 
-.customer-input:focus {
+.customerInput:focus {
   border-color: #3c4fe0;
   box-shadow: 0 1px 0 0 rgb(35 38 59 / 5%);
 }
@@ -32,4 +32,9 @@
 }
 .invalid::placeholder {
   color: #fff !important;
+}
+@media (max-width: 576px) {
+  .invalid {
+    background-color: salmon !important;
+  }
 }

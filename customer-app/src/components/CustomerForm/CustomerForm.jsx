@@ -1,35 +1,35 @@
 import { useState } from "react";
-import styled from 'styled-components'
-import "./CustomerForm.css";
+import styles from "./CustomerForm.module.css";
 
-const Form = styled.form`
-display: flex;
-justify-content: space-between;
-align-items: center;
-column-gap: 10px;
-margin-bottom: 20px;
+// import styled from 'styled-components'
+// const Form = styled.form`
+// display: flex;
+// justify-content: space-between;
+// align-items: center;
+// column-gap: 10px;
+// margin-bottom: 20px;
 
-& input{
-  position: relative;
-  cursor: text;
-  font-size: 14px;
-  line-height: 20px;
-  padding: 0 16px;
-  height: 48px;
-  background-color: ${(props) => (props.invalid ? "red" : '#fff')};
-  border: 1px solid #d6d6e7;
-  border-radius: 3px;
-  color: rgb(35, 38, 59);
-  box-shadow: inset 0 1px 4px 0 rgb(119 122 175 / 30%);
-  overflow: hidden;
-  transition: all 100ms ease-in-out;
-  flex: 1;
-}
+// & input{
+//   position: relative;
+//   cursor: text;
+//   font-size: 14px;
+//   line-height: 20px;
+//   padding: 0 16px;
+//   height: 48px;
+//   background-color: ${(props) => (props.invalid ? "red" : '#fff')};
+//   border: 1px solid #d6d6e7;
+//   border-radius: 3px;
+//   color: rgb(35, 38, 59);
+//   box-shadow: inset 0 1px 4px 0 rgb(119 122 175 / 30%);
+//   overflow: hidden;
+//   transition: all 100ms ease-in-out;
+//   flex: 1;
+// }
 
-& ::placeholder{
-  color: ${(props) => (props.invalid ? 'white' : '')}
-}
-`
+// & ::placeholder{
+//   color: ${(props) => (props.invalid ? 'white' : '')}
+// }
+// `
 
 
 
@@ -58,10 +58,11 @@ const CustomerForm = ({ addNewCustomer }) => {
     setCustomerName(nameValue)
   }
   return (
-    <Form className="customer-form" onSubmit={handleSubmit} invalid={isValid}>
+    <form className={styles.customerForm} onSubmit={handleSubmit} invalid={isValid}>
       <input
         type="text"
-        className={`customer-input ${isValid ? 'invalid' : ""}`}
+        // className={`customer-input ${isValid ? 'invalid' : ""}`}
+        className={`${styles.customerInput}  ${isValid ? styles.invalid : ""}`}
         placeholder="Add a new customer"
         onChange={nameInputChangeHandler}
         value={customerName}
@@ -70,7 +71,7 @@ const CustomerForm = ({ addNewCustomer }) => {
       <button>
         <i className="bi bi-plus-lg"></i>
       </button>
-    </Form>
+    </form>
   );
 };
 
