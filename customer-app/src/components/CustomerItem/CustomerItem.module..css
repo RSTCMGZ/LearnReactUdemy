@@ -1,28 +1,32 @@
-.customer-item {
+.customerItem {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
 }
 
-.customer-info {
+.customerInfo {
     display: flex;
     align-items: center;
     column-gap: 10px;
 }
 
-.customer-avatar {
+.customerAvatar {
     width: 50px;
     height: 50px;
     border-radius: 50px;
 }
 
-.customer-name {
+.customerName {
     font-weight: 500;
     font-size: 18px;
 }
 
-/* .delete-button {
+.deleteButton {
     background-color: red;
     padding: 8px;
-} */
+    transition: opacity 0.3s ease;
+}
+.deleteButton:hover {
+    opacity: 0.5;
+}
