@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import ErrorModal from "../UI/ErrorModal";
@@ -11,10 +11,9 @@ const AddWorker = (props) => {
 
     const nameInputRef = useRef()
     const wageInputRef = useRef()
-
     const minimumWage = 5000;
 
-
+    useEffect()
 
     const addWorkerHandler = (e) => {
         console.log(nameInputRef);
