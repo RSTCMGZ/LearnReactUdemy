@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import Button from "./Button";
 import Card from "./Card";
@@ -37,6 +37,23 @@ const ModalOverlay = (props) => {
 const ErrorModal = (props) => {
     const { onConfirm, error } = props;
     const { title, message } = error;
+    const cleanupRef = useRef()
+
+    useEffect(() => {
+        return () => {
+            if (cleanupRef.current) {
+                props.setWorkers([])
+            }
+        }
+    }, [cleanupRef, props])
+
+    useEffect(() => {
+        return () => {
+            cleanupRef.current = true
+        }
+    }, [])
+
+
     return (
         <React.Fragment>
             {ReactDOM.createPortal(<Backdrop onConfirm={onConfirm} />, document.getElementById('backdrop-root'))}
