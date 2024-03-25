@@ -4,7 +4,7 @@ export const Calculator = () => {
 
     const [number1, setNumber1] = useState(0)
     const [number2, setNumber2] = useState(0)
-    const [result, setResult] = useState()
+    const [result, setResult] = useState(0)
 
     const handleNumber1Change = (e) => {
         setNumber1(Number(e.target.value))
@@ -14,8 +14,8 @@ export const Calculator = () => {
     }
     const handleAddition = () => {
         setResult(number1 + number2)
-        setNumber1('')
-        setNumber2('')
+        setNumber1(0)
+        setNumber2(0)
     }
     return (
         <div className="calculator-container">
@@ -44,7 +44,7 @@ export const Calculator = () => {
                     <input type="number" className="form-input" id="result"
                         onChange={handleAddition}
                         value={result}
-
+                        readOnly
                     />
                 </div>
             </div>
