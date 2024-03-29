@@ -4,7 +4,6 @@ import Header from "./components/Header"
 import Products from "./components/Products"
 
 function App() {
-  const [cart, setCart] = useState([])
   const emptyCart = () => {
     setCart([])
   }
