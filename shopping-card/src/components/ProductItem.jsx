@@ -1,5 +1,12 @@
+import { useContext } from "react"
+import { CartContext } from "../context/CartContext"
 
-export const ProductItem = ({ product, cart, setCart }) => {
+
+export const ProductItem = ({ product }) => {
+
+    const { cart, setCart } = useContext(CartContext)
+
+
     const findProduct = cart.find((item) => item.id === product.id)
     const addToCart = (product) => {
         // setCart([...cart, product])

@@ -1,10 +1,9 @@
 import { FiShoppingCart } from 'react-icons/fi'
 import { useContext } from 'react'
-import { MyContext } from '../context/MyContext'
-function CardIcon({ cart }) {
+import { CartContext } from '../context/CartContext'
 
-
-
+function CardIcon() {
+    const { cart } = useContext(CartContext)
     return (
         <div>
 
