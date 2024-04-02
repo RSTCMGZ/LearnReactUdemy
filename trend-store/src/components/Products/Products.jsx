@@ -1,17 +1,17 @@
-import './Products.css'
-import products from '../../productData'
-import ProductItem from './ProductItem'
+import products from "../../productData";
+import ProductItem from "./ProductItem";
+import "./Products.css";
+
 const Products = () => {
-    ProductItem
-    const productList = products.map((product) =>
-        <ProductItem key={item.id} product={product} />)
+    const productList = products.map((product) => (
+        <ProductItem key={product.id} product={product} />
+    ));
+
     return (
         <main className="products-wrapper">
-            <ul className="products">
-                {productList}
-            </ul>
+            <ul className="products">{productList}</ul>
         </main>
-    )
-}
+    );
+};
 
-export default Products
+export default Products;

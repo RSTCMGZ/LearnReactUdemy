@@ -1,8 +1,8 @@
-import React from 'react'
+import "./Rating.css"
 
 const Rating = () => {
     return (
-        <div className='rating'>
+        <div className="rating">
             <svg className="star" viewBox="0 0 24 24">
                 <path
                     fill={"#ffc107"}
@@ -34,7 +34,7 @@ const Rating = () => {
                 />
             </svg>
         </div>
-    )
-}
+    );
+};
 
-export default Rating
+export default Rating;
