@@ -1,11 +1,11 @@
 
 import './Header.css'
 import HeaderCartButton from './HeaderCartButton'
-const Header = () => {
+const Header = ({ showCartHandler }) => {
     return (
         <header className='header'>
             <h1>Trend Mağaza</h1>
-            <HeaderCartButton />
+            <HeaderCartButton showCartHandler={showCartHandler} />
         </header>
     )
 }

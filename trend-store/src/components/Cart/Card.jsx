@@ -1,13 +1,24 @@
+import products from '../../productData'
 import './Cart.css'
-const Card = () => {
+import CartItem from './CartItem'
+const Card = (props) => {
+
+    const cartItems = (
+        <ul className='cart-items'>
+            {products.map((product) =>
+                <CartItem key={product.id} product={product} />
+            )}
+        </ul>
+    )
+
     return (
         <div className='offcanvas'>
             <div className="content">
                 <div className="cart-head">
                     <h2>Sepetim</h2>
-                    <a href="/" className=''>X</a>
+                    <a href="/" onClick={props.onClose} className='cart-close'>X</a>
                 </div>
-                cartItems
+                {cartItems}
                 <div className="total">
                     <span>Toplam Değer</span>
                     <span>10₺</span>
