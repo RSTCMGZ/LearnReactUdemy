@@ -3,6 +3,7 @@ import Card from "./components/Cart/Card"
 import Hero from "./components/Hero/Hero"
 import Header from "./components/Layout/Header"
 import Products from "./components/Products/Products"
+import cartProvider from "./context/cartProvider"
 
 function App() {
   const [cardIsShow, setCardIsShow] = useState(false)
@@ -15,12 +16,12 @@ function App() {
     setCardIsShow(false)
   }
   return (
-    <div>
+    <cartProvider>
       {cardIsShow && <Card onClose={hideCartHandler} />}
       <Header showCartHandler={showCartHandler} />
       <Hero />
       <Products />
-    </div>
+    </cartProvider>
   )
 }
 
