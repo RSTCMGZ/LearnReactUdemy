@@ -1,12 +1,12 @@
-import products from '../../productData'
-import Offcanvas from '../UI/Offcanvas'
+import { useContext } from 'react'
 import './Cart.css'
 import CartItem from './CartItem'
+import Offcanvas from '../UI/Offcanvas'
 const Card = (props) => {
-
+    const { items, totalAmount } = useContext(CartContext)
     const cartItems = (
         <ul className='cart-items'>
-            {products.map((product) =>
+            {items.map((product) =>
                 <CartItem key={product.id} product={product} />
             )}
         </ul>
@@ -20,7 +20,7 @@ const Card = (props) => {
             {cartItems}
             <div className="total">
                 <span>Toplam Değer</span>
-                <span>10₺</span>
+                <span>{totalAmount.toFixed(2)}₺</span>
             </div>
             <div className="actions">
                 <button className='cart-border'>Sipariş ver</button>
