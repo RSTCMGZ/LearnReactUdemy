@@ -1,28 +1,30 @@
-import { useState } from "react"
-import Card from "./components/Cart/Card"
-import Hero from "./components/Hero/Hero"
-import Header from "./components/Layout/Header"
-import Products from "./components/Products/Products"
-import cartProvider from "./context/cartProvider"
+import { useState } from "react";
+import Cart from "./components/Cart/Cart";
+import Hero from "./components/Hero/Hero";
+import Header from "./components/Layout/Header";
+import Products from "./components/Products/Products";
+import CartProvider from "./context/CartProvider";
 
 function App() {
-  const [cardIsShow, setCardIsShow] = useState(false)
+  const [cartIsShow, setCartIsShow] = useState(false);
 
   const showCartHandler = () => {
-    setCardIsShow(true)
-  }
+    setCartIsShow(true);
+  };
+
   const hideCartHandler = (e) => {
-    e.preventDefault()
-    setCardIsShow(false)
-  }
+    e.preventDefault();
+    setCartIsShow(false);
+  };
+
   return (
-    <cartProvider>
-      {cardIsShow && <Card onClose={hideCartHandler} />}
-      <Header showCartHandler={showCartHandler} />
+    <CartProvider>
+      {cartIsShow && <Cart onClose={hideCartHandler} />}
+      <Header onShowCart={showCartHandler} cartIsShow={cartIsShow} />
       <Hero />
       <Products />
-    </cartProvider>
-  )
+    </CartProvider>
+  );
 }
 
-export default App
+export default App;

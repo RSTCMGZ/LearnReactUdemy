@@ -1,8 +1,7 @@
-import './card.css'
-const Card = (props) => {
-    return (
-        <li className='card'>{props.children}</li>
-    )
-}
+import "./Card.css";
 
-export default Card
+const Card = (props) => {
+    return <li className="card">{props.children}</li>;
+};
+
+export default Card;

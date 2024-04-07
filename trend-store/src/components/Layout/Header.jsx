@@ -1,13 +1,13 @@
+import "./Header.css";
+import HeaderCartButton from "./HeaderCartButton";
 
-import './Header.css'
-import HeaderCartButton from './HeaderCartButton'
-const Header = ({ showCartHandler }) => {
+const Header = ({ onShowCart, cartIsShow }) => {
     return (
-        <header className='header'>
+        <header className="header">
             <h1>Trend Mağaza</h1>
-            <HeaderCartButton showCartHandler={showCartHandler} />
+            <HeaderCartButton onShowCart={onShowCart} cartIsShow={cartIsShow} />
         </header>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;
