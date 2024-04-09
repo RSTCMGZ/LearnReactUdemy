@@ -7,3 +7,5 @@ const Button = (props) => {
 }
 
 export default Button
+
+props.onClick === props.prev.onClick
