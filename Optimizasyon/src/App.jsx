@@ -1,13 +1,13 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import './App.css'
 import Button from './components/UI/Button'
 import MyElement from './components/UI/MyElement'
 
 function App() {
   const [toggleParagraph, setToggleParagraph] = useState(false)
-  const toggleParagraphHandler = () => {
+  const toggleParagraphHandler = useCallback(() => {
     setToggleParagraph((prevState) => !prevState)
-  }
+  }, [])
   return (
     <div className='container'>
       <h1>Hello</h1>

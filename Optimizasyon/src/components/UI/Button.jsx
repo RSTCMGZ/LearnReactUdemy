@@ -5,7 +5,7 @@ const Button = (props) => {
         <button onClick={props.onClick}>{props.children}</button>
     )
 }
+const Memoized = React.memo(Button)
+export default Memoized
 
-export default Button
-
-props.onClick === props.prev.onClick
+// props.onClick === props.prev.onClick
