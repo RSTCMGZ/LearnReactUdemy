@@ -5,13 +5,24 @@ import MyElement from './components/UI/MyElement'
 
 function App() {
   const [toggleParagraph, setToggleParagraph] = useState(false)
+  const [toggleAllow, setToggleAllow] = useState(false)
+
+
   const toggleParagraphHandler = useCallback(() => {
-    setToggleParagraph((prevState) => !prevState)
+    if (toggleAllow) {
+      setToggleParagraph((prevState) => !prevState)
+    }
+  }, [])
+
+  const toggleAllowHandler = useCallback(() => {
+    setToggleAllow(true)
   }, [])
   return (
     <div className='container'>
       <h1>Hello</h1>
-      <MyElement show={false} />
+      <MyElement show={toggleParagraph} />
+      <br /> <br />
+      <Button onClick={toggleAllowHandler}>Toggle Paragraph</Button>
       <br /> <br />
       <Button onClick={toggleParagraphHandler}>Toggle Paragraph</Button>
     </div>
