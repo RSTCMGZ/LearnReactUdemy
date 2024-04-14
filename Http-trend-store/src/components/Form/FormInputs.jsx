@@ -1,13 +1,15 @@
 import { useState } from "react";
 import "./FormInputs.css";
 
-const FormInputs = () => {
-    const [inputValues, setInputValues] = useState({
-        title: "",
-        price: "",
-        image: "",
-        category: "",
-    });
+
+const inialValues = {
+    title: "",
+    price: "",
+    image: "",
+    category: "",
+}
+const FormInputs = ({ fetchProductsHandler }) => {
+    const [inputValues, setInputValues] = useState(inialValues);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -16,9 +18,31 @@ const FormInputs = () => {
             [name]: value,
         }));
     };
-
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const { image, ...rest } = inputValues
+        const newData = {
+            ...rest,
+            img: image,
+        }
+        try {
+            const response = await fetch('https://my-pos-application-api.onrender.com/api/products/create-product', {
+                method: 'POST',
+                body: JSON.stringify(inputValues),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            if (response.status === 200) {
+                fetchProductsHandler()
+                setInputValues(inialValues)
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
     return (
-        <form className="product-form">
+        <form className="product-form" onSubmit={handleSubmit}>
             <div className="form-title">
                 <label htmlFor="title">Title</label>
                 <input

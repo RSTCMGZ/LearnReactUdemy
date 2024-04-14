@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ProductItem from "./ProductItem";
 import "./Products.css";
+import FormInputs from "../Form/FormInputs";
 
 const Products = () => {
   const [products, setProducts] = useState([])
@@ -10,7 +11,7 @@ const Products = () => {
 
   const productList = products.map((product) => (
     <ProductItem key={product.id} product={product} />
-  ));
+  )).reverse();
 
   const fetchProductsHandler = async () => {
     setIsLoading(true)
@@ -48,6 +49,7 @@ const Products = () => {
   }
   return (
     <main className="products-wrapper">
+      <FormInputs fetchProductsHandler={fetchProductsHandler} />
       <ul className="products">{content}</ul>
 
       <button className="button"
