@@ -1,17 +1,63 @@
-import products from "../../productData";
+// import products from "../../productData";
+import { useCallback, useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
 import "./Products.css";
+import FormInputs from "../Form/FormInputs";
+import useHttp from "../../hooks/use-http";
 
 const Products = () => {
-    const productList = products.map((product) => (
-        <ProductItem key={product.id} product={product} />
-    ));
+  const [products, setProducts] = useState([]);
+  const { isLoading, error, sendRequest: fetchProducts } = useHttp()
 
-    return (
-        <main className="products-wrapper">
-            <ul className="products">{productList}</ul>
-        </main>
-    );
+  const productList = products.map((product) => (
+    <ProductItem key={product.id} product={product} />
+  )).reverse();
+
+  const transformProducts = (productArr) => {
+    const newProducts = productArr.map((item) => {
+      return {
+        id: item._id,
+        name: item.title,
+        ...item,
+      };
+    });
+    setProducts(newProducts)
+
+  }
+
+  useEffect(() => {
+    fetchProducts({
+      url: 'buraya url yaz'
+    }, transformProducts)
+  }, [fetchProducts]);
+
+  let content = <p>Found no products!</p>;
+
+  if (products.length > 0) {
+    content = productList;
+  }
+
+  if (error) {
+    content = <p>{error}</p>;
+  }
+
+  if (isLoading) {
+    content = <p>Loading...</p>;
+  }
+  const fetchProductsHandler = () => {
+    fetchProducts({
+      url: 'buraya url yaz'
+    }, transformProducts)
+  }
+  return (
+    <main className="products-wrapper">
+      <FormInputs fetchProductsHandler={fetchProducts} />
+      <ul className="products">{content}</ul>
+      <button className="button" onClick={fetchProducts}>
+        Fetch Products
+      </button>
+    </main>
+  );
 };
 
 export default Products;

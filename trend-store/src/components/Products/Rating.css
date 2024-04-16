@@ -1,8 +1,9 @@
 .rating {
     display: flex;
-}
-
-.star {
+  }
+  
+  .star {
     width: 1.5rem;
     height: 1.5rem;
-}
+  }
+  
