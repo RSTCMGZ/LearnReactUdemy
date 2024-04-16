@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./FormInputs.css";
+import useHttp from "../../hooks/use-http";
 
 const inialValues = {
   title: "",
@@ -8,8 +9,10 @@ const inialValues = {
   category: "",
 };
 
-const FormInputs = ({ fetchProductsHandler }) => {
+const FormInputs = ({ onAddProduct }) => {
   const [inputValues, setInputValues] = useState(inialValues);
+  const { isLoading, error, sendRequest: sendProductRequest } = useHttp()
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,6 +22,13 @@ const FormInputs = ({ fetchProductsHandler }) => {
     }));
   };
 
+  const createProduct = () => {
+    const generatedId = inputValues.title
+    const createdProduct = { id: generatedId, ...inputValues }
+
+    onAddProduct(createdProduct)
+    setInputValues(inialValues)
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { image, ...rest } = inputValues;
@@ -26,26 +36,16 @@ const FormInputs = ({ fetchProductsHandler }) => {
       ...rest,
       img: image,
     };
-    
-    try {
-      const response = await fetch(
-        "https://my-pos-application-api.onrender.com/api/products/create-product",
-        {
-          method: "POST",
-          body: JSON.stringify(newData),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (response.status === 200) {
-        fetchProductsHandler();
-        setInputValues(inialValues);
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
+    sendProductRequest({
+      url: "https://my-pos-application-api.onrender.com/api/products/create-product",
+      method: 'POST',
+      body: newData,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    },
+      createProduct(newData)
+    )
   };
 
   return (

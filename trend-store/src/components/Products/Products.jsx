@@ -49,9 +49,19 @@ const Products = () => {
       url: 'buraya url yaz'
     }, transformProducts)
   }
+
+  const productAddHandler = (newProduct) => {
+    setProducts((prevProducts) => [
+      ...prevProducts,
+      {
+        name: newProduct.title,
+        img: newProduct.image,
+        ...newProduct
+      }])
+  }
   return (
     <main className="products-wrapper">
-      <FormInputs fetchProductsHandler={fetchProducts} />
+      <FormInputs fetchProductsHandler={fetchProducts} onAddProduct={productAddHandler} />
       <ul className="products">{content}</ul>
       <button className="button" onClick={fetchProducts}>
         Fetch Products
