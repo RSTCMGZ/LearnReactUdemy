@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-
+import './MainNavigation.css'
 const MainNavigation = () => {
     return (
         <header>

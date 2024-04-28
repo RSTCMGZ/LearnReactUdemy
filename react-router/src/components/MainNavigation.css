@@ -1,0 +1,14 @@
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+    font-size: 24px;
+}
+header ul li a {
+    text-decoration: none;
+}
