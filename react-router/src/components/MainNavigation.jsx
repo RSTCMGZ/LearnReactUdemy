@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import './MainNavigation.css'
 const MainNavigation = () => {
     return (
@@ -6,10 +6,16 @@ const MainNavigation = () => {
             <nav>
                 <ul>
                     <li>
-                        <Link to='/'>Home</Link>
+                        <NavLink to='/'
+                            className={({ isActive }) => (isActive ? 'active' : undefined)}>
+                            Home
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to='/products'>Products</Link>
+                        <NavLink to='/products'
+                            className={({ isActive }) => (isActive ? 'active' : undefined)}>
+                            Products
+                        </NavLink>
                     </li>
                 </ul>
             </nav>
